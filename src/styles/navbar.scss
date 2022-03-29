@@ -1,0 +1,102 @@
+#app {
+  .main-container {
+    min-height: 100%;
+    position: relative;
+    text-align: center;
+  }
+
+  .navbar {
+    overflow: hidden;
+    position: relative;
+
+    .navbar-main {
+      text-align: left;
+
+      .logo-container {
+        display: inline-block;
+        height: 68px;
+        line-height: 68px;
+      }
+
+      .menu-container {
+        .el-menu--horizontal {
+          .el-menu-item {
+            height: 68px;
+            line-height: 61px;
+            border-bottom: 0px;
+            border-top: 4px solid transparent;
+            display: inline-block;
+            background-color: #ebeef5 !important;
+
+            &.is-active {
+              border-top: 4px solid #2D61AD;
+            }
+
+            &:hover {
+              background: #ebeef5 !important;
+            }
+          }
+
+          .el-submenu {
+            display: inline-block;
+
+            .el-submenu__title {
+              height: 68px;
+              line-height: 61px;
+              border-bottom: 0px;
+              border-top: 4px solid transparent;
+              padding-right: 40px;
+
+              &:hover {
+                background: #ebeef5 !important;
+              }
+            }
+
+            &.is-active {
+              .el-submenu__title {
+                border-top: 4px solid #2D61AD;
+              }
+            }
+          }
+
+          .menu-avatar {
+            float: right;
+
+            .avatar-wrapper {
+              position: relative;
+
+              .user-avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 40px;
+              }
+
+              .user-name {
+                margin-left: 6px;
+              }
+            }
+
+            &.is-disabled {
+              opacity: 1;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.el-submenu {
+  .el-submenu__title {
+    &:hover {
+      background: #ebeef5 !important;
+    }
+  }
+}
+
+.el-menu-item {
+  &:hover {
+    background: #ebeef5 !important;
+  }
+}

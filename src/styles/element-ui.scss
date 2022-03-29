@@ -1,0 +1,120 @@
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block
+  }
+}
+
+// to fix el-date-picker css style
+.el-range-separator {
+  box-sizing: content-box;
+}
+
+.user-popper{
+  &.el-popover{
+    padding: 12px 0;
+  }
+}
+
+// link
+.el-link{
+  margin: 0 6px;
+}
+
+.el-link:after{
+  content: '';
+  position: absolute;
+  left: auto;
+  top: auto;
+  bottom: 5px;
+  right: -9px;
+  height: 54%;
+  width: 1px;
+  background-color: #2D61AD;;
+}
+
+.el-link:last-child:after{
+  width: 0px;
+}
+
+//el-table
+.el-table{
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-style: normal;
+
+  .el-table__header tr th{
+    background: #FAFAFA;
+    color: #333333;
+    font-weight: normal;
+  }
+
+  .el-table__body tr td{
+    color: #4F4F4F;
+    font-weight: normal;
+  }
+}
+
+// el-pagination
+.el-pagination{
+  text-align: right;
+  margin: 15px 20px 0;
+
+  .el-pagination__total{
+    float: left;
+  }
+
+  .el-pagination__sizes{
+    float: left;
+  }
+}
+
+.el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li{
+  background-color: #ffff;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+}
+
+//el-button
+.el-button{
+  padding: 5px 10px;
+  font-size: 14px;
+}
