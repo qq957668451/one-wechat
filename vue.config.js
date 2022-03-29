@@ -36,16 +36,16 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    // proxy: {
-    //   '/api': {
-    //     // target: 'http://101.200.155.221:10095',
-    //     target: 'http://119.23.147.232:20080/',
-    //     // target: 'http://192.168.2.75',
-    //     ws: false,
-    //     changeOrigin: true
-    //   }
-    // },
-    before: require('./mock/mock-server.js')
+    proxy: {
+      '/api': {
+        //     // target: 'http://101.200.155.221:10095',
+        //     target: 'http://119.23.147.232:20080/',
+        target: 'http://91micogame.com:8088',
+        ws: false,
+        changeOrigin: true
+      }
+    },
+    // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

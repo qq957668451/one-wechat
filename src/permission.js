@@ -9,7 +9,7 @@ import { param2Obj } from '@/utils/index'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = ['/login', '/401', '/404'] // no redirect whitelist
+const whiteList = ['/login', '/401', '/404', '/proHome', '/user', '/master', '/renbao'] // no redirect whitelist
 
 // 账号密码登录
 router.beforeEach(async (to, from, next) => {
@@ -67,7 +67,11 @@ router.beforeEach(async (to, from, next) => {
   } else {
     /* has no token*/
 
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (whiteList.indexOf(to.path) !== -1
+      || (to.path).indexOf('/user/') !== -1
+      || (to.path).indexOf('/master/') !== -1
+      || (to.path).indexOf('/renbao/') !== -1
+    ) {
       // in the free login whitelist, go directly
       next()
     } else {

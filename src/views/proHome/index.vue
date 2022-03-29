@@ -8,6 +8,7 @@
 
 <script>
 import wx from 'weixin-js-sdk';
+import { initWxJsSdk } from '@/api/common'
 export default {
   name: 'pedigree',
   components: {},
@@ -15,12 +16,15 @@ export default {
     return {}
   },
   mounted() {
-    wx.getNetworkType({
-      success: function (res) {
-        console.log('res', res);
-        // var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
-      }
-    });
+    initWxJsSdk('', () => {
+      wx.getNetworkType({
+        success: function (res) {
+          console.log('res', res);
+          // var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
+        }
+      });
+    })
+
   },
   methods: {
     pathTo(path) {

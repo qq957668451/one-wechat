@@ -1,5 +1,6 @@
 <template>
-  <div class="login-container">
+  <div @click="handleLogin">登录</div>
+  <!-- <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
@@ -32,10 +33,11 @@
       </div>
 
     </el-form>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import axios from "axios";
 import { validUsername } from "@/utils/validate";
 
 export default {
@@ -73,6 +75,17 @@ export default {
       redirect: undefined,
     };
   },
+  mounted() {
+    let baseURL = 'https://wxservertest.picc-henan.net/'
+    axios.post(baseURL + "/wx/config", null, {
+      params: { url: 123 },
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then(res => {
+      console.log('123', 123);
+    })
+  },
   watch: {
     $route: {
       handler: function (route) {
@@ -93,23 +106,16 @@ export default {
       });
     },
     handleLogin() {
-      this.$refs.loginForm.validate((valid) => {
-        if (valid) {
-          this.loading = true;
-          this.$store
-            .dispatch("user/login", this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || "/" });
-              this.loading = false;
-            })
-            .catch(() => {
-              this.loading = false;
-            });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+      this.loading = true;
+      this.$store
+        .dispatch("user/login", this.loginForm)
+        .then(() => {
+          this.$router.push({ path: this.redirect || "/" });
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
     },
   },
 };

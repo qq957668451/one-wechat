@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import { wxinit } from '@/api/user'
 export default {
   props: {
 
