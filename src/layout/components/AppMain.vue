@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style scoped>
-.app-main {
+/* .app-main {
   width: 100vw;
   position: relative;
   overflow-y: scroll;
@@ -26,5 +26,5 @@ export default {
   border: 0px solid #e0e0e0;
   box-align: border-box;
   text-align: left;
-}
+} */
 </style>

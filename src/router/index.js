@@ -114,9 +114,15 @@ export const asyncRoutes = [
     children: [
       {
         path: 'index',
+        redirect: '/master/index/home',
         component: () => import('@/views/indexJc/index'),
         name: 'masterIndex',
         meta: { title: 'master端' },
+        children: [{
+          path: 'home',
+          name: 'masterHome',
+          component: () => import('@/views/indexJc/home/homeIndex'),
+        }]
       },
     ]
   },

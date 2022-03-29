@@ -10,7 +10,7 @@
         <div class="message-404__label">404</div>
         <div class="message-404__desc">抱歉，您访问的页面不存在</div>
         <div>
-          <el-button class="back-btn" type="primary">返回首页</el-button>
+          <!-- <el-button class="back-btn" type="primary">返回首页</el-button> -->
         </div>
       </div>
     </div>
