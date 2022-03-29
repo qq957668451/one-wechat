@@ -66,111 +66,58 @@ export const asyncRoutes = [
       meta: { title: '谱系', icon: 'change', role: 'ChangeLog' }
     }]
   },
-
   {
-    path: '/example',
+    path: '/user',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: '组件', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: '表格', icon: 'table' }
-      },
-      {
-        path: 'select-person',
-        name: 'SelectPerson',
-        component: () => import('@/views/select-person/index'),
-        meta: { title: '选人', icon: 'select-person' }
-      },
-      {
-        path: 'form',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: '表单', icon: 'form', activeMenu: '/example/table' },
-        hidden: false
-      },
-      {
-        path: 'tinymce',
-        name: 'TinymceDemo',
-        component: () => import('@/views/tinymce/index'),
-        meta: { title: '富文本', icon: 'tinymce' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'FormDemo',
-        component: () => import('@/views/form/index'),
-        meta: { title: '三号菜单', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
+    redirect: '/user/index',
+    name: 'User',
     meta: {
-      title: '四号菜单',
+      title: '用户端',
       icon: 'nested'
     },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: '四号1-1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: '四号1-1-1', activeMenu: '/nested/menu1/menu1-3' },
-            hidden: true
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: '四号1-1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: '四号1-1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: '四号1-1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: '四号1-1-3' }
-          }
-        ]
+        path: 'index',
+        component: () => import('@/views/indexUser/index'),
+        name: 'UserIndex',
+        meta: { title: '用户首页' },
       },
+    ]
+  },
+  {
+    path: '/renbao',
+    component: Layout,
+    redirect: '/renbao/index',
+    name: 'Renbao',
+    meta: {
+      title: '人保端',
+      icon: 'nested'
+    },
+    children: [
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: '四号1-2' }
-      }
+        path: 'index',
+        component: () => import('@/views/indexRb/index'),
+        name: 'RenbaoIndex',
+        meta: { title: '人保首页' },
+      },
+    ]
+  },
+  {
+    path: '/master',
+    component: Layout,
+    redirect: '/master/index',
+    name: 'master',
+    meta: {
+      title: 'master端',
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/indexJc/index'),
+        name: 'masterIndex',
+        meta: { title: 'master端' },
+      },
     ]
   },
 

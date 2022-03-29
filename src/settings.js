@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '云谱世家',
+  title: '公众号',
 
   /**
    * @type {boolean} true | false

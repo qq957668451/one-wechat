@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
-
+const webpack = require('webpack');
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -12,8 +12,8 @@ const name = defaultSettings.title || '云谱世家' // page title
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
 // You can change the port by the following methods:
-// port = 9528 npm run dev OR npm run dev --port = 9528
-const port = process.env.port || process.env.npm_config_port || 9528 // dev port
+// port = 8888 npm run dev OR npm run dev --port = 8888
+const port = process.env.port || process.env.npm_config_port || 8888 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
   publicPath: process.env.VUE_APP_COMMON_PATH,
-  outputDir: 'dist',
+  outputDir: 'userDist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -36,6 +36,15 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    // proxy: {
+    //   '/api': {
+    //     // target: 'http://101.200.155.221:10095',
+    //     target: 'http://119.23.147.232:20080/',
+    //     // target: 'http://192.168.2.75',
+    //     ws: false,
+    //     changeOrigin: true
+    //   }
+    // },
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {
@@ -46,8 +55,15 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        moment: "moment"
+      })
+    ],
   },
+
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test

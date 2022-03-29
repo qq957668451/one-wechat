@@ -11,53 +11,6 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['/login', '/401', '/404'] // no redirect whitelist
 
-// 对接统一身份认证
-/* router.beforeEach(async(to, from, next) => {
-  // start progress bar
-  NProgress.start()
-
-  // set page title
-  document.title = getPageTitle(to.meta.title)
-
-  if (to.path === '/login') {
-    next({ path: '/' })
-    NProgress.done()
-  } else {
-    const hasToken = getToken()
-    if (!hasToken) {
-      const params = param2Obj(window.location.href)
-      if (params.token) {
-        setToken(params.token)
-      }
-    }
-
-    try {
-      const hasRoles = store.getters.permission_routes && store.getters.permission_routes.length > 0
-      if (!hasRoles) {
-        // generate accessible routes map based on roles
-        const accessRoutes = await store.dispatch('permission/generateRoutes')
-
-        if (accessRoutes && accessRoutes.length > 1) {
-          // dynamically add accessible routes
-          router.addRoutes(accessRoutes)
-
-          // hack method to ensure that addRoutes is complete
-          // set the replace: true, so the navigation will not leave a history record
-          next({ ...to, replace: true })
-        } else {
-          next({ path: '/401', replace: true })
-        }
-      }
-    } catch (error) {
-      // remove token and go to login page to re-login
-      await store.dispatch('user/resetToken')
-      Message.error('获取信息失败，请联系管理员')
-    }
-
-    next()
-  }
-}) */
-
 // 账号密码登录
 router.beforeEach(async (to, from, next) => {
   // start progress bar
