@@ -11,13 +11,14 @@ baseURL = "https://wxservertest.picc-henan.net/";
 export const initWxJsSdk = (path, cb) => {
     let myurl = location.href.split("#")[0];
     request({
-        url: '/vue-admin-template/user/logout',
+        baseURL: baseURL,
+        url: '/wx/config',
         method: 'post',
         params: {
             url: myurl || path
         }
     }).then(res => {
-        var retData = res.data.wxJsapiSignature;
+        var retData = res.wxJsapiSignature;
         wx.config({
             debug: false,
             appId: appId,
