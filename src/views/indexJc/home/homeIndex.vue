@@ -2,23 +2,23 @@
   <div class="master-index">
     <div class="jc-back">
       <div class="first-card">
-        <div>
+        <div class="title">
           <img src="@/assets/public_images/cars.png" alt="" />
           <span>电动车</span>
         </div>
         <div class="add-btn">
-          <van-icon name="add-o" />
-          电动车备案
+          <van-icon size="15" name="add-o" />
+          <span>电动车备案</span>
         </div>
       </div>
       <div class="first-card second-card">
-        <div>
+        <div class="title">
           <img class="second-img" src="@/assets/public_images/certificate.png" alt="" />
           <span>电动车轨迹</span>
         </div>
         <div class="integral">
           <span>存在违纪</span>
-          <span>1条</span>
+          <span>1 &nbsp;条</span>
         </div>
         <div class="integral">
           <span>证件状态</span>
@@ -32,11 +32,7 @@
 <script>
 import axios from 'axios'
 import { wxinit } from '@/api/user'
-// import { Icon } from 'vant'
 export default {
-  components: {
-    // [Icon.name]: Icon
-  },
   data() {
     return {}
   },
@@ -66,21 +62,23 @@ export default {
     .first-card {
       width: 175px;
       border: 2px solid #6891ae;
-      height: 75px;
+      height: 95px;
       border-radius: 10px;
-      padding: 8px 15px;
+      padding: 10px 15px;
       color: #fff;
       box-sizing: border-box;
+      .title {
+        line-height: 15px;
+      }
       img {
         width: 25px;
         height: 15px;
         float: left;
       }
       span {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 600;
-        margin-left: 10px;
-        line-height: 15px;
+        margin-left: 15px;
       }
       .add-btn {
         width: 140px;
@@ -89,10 +87,13 @@ export default {
         background: #cee3fe;
         text-align: center;
         line-height: 28px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 500;
-        margin-top: 10px;
+        margin-top: 15px;
         color: #384c9c;
+        span {
+          margin-left: 5px;
+        }
       }
       .second-img {
         width: 24px;
@@ -100,13 +101,13 @@ export default {
     }
     .second-card {
       .integral {
-        margin: 7px 0;
+        margin: 10px 0;
         display: flex;
         justify-content: space-between;
         span {
-          font-size: 8px;
+          font-size: 12px;
           font-weight: 400;
-          line-height: 12px;
+          line-height: 15px;
           margin: 0;
         }
       }
