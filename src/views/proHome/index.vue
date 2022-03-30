@@ -19,10 +19,10 @@ export default {
     initWxJsSdk('', () => {
       wx.getNetworkType({
         success: function (res) {
-          console.log('res', res);
+          console.log('res', res)
           // var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
         }
-      });
+      })
     })
 
   },

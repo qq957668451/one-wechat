@@ -1,11 +1,11 @@
 import axios from 'axios'
 import store from '@/store'
 import { getToken, removeToken } from '@/utils/auth'
+import { Toast } from 'vant'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   timeout: 15000 // request timeout
 })
-
 
 // request interceptor
 service.interceptors.request.use(
@@ -24,19 +24,13 @@ service.interceptors.request.use(
 
 // response interceptor
 service.interceptors.response.use(
-  /**
-   * If you want to get http information such as headers or status
-   * Please return  response => response
-  */
-
-  /**
-   * Determine the request status by custom code
-   * Here is just an example
-   * You can also judge the status by HTTP Status Code
-   */
   response => {
     const res = response.data
-
+    console.log('response', response);
+    // JS-SDK权限验证配置
+    if (response.config.url === '/wx/config') {
+      return res
+    }
     // 统一身份认证 登录重定向
     if (typeof res.code !== 'undefined' && parseInt(res.code) === 302) {
       removeToken()
@@ -46,38 +40,26 @@ service.interceptors.response.use(
 
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
-      // Message({
-      //   message: res.message || 'Error',
-      //   type: 'error',
-      //   duration: 5 * 1000
-      // })
-
+      Toast({
+        type: 'fail',
+        message: res.message || '失败',
+        duration: 3000,
+      });
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
-        // to re-login
-        // MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
-        //   confirmButtonText: 'Re-Login',
-        //   cancelButtonText: 'Cancel',
-        //   type: 'warning'
-        // }).then(() => {
-        //   store.dispatch('user/resetToken').then(() => {
-        //     location.reload()
-        //   })
-        // })
       }
-      // return Promise.reject(new Error(res.message || 'Error'))
-      return res
+      return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return res
     }
   },
   error => {
+    Toast({
+      type: 'fail',
+      message: error.message || '失败',
+      duration: 3000,
+    });
     console.log('err' + error) // for debug
-    // Message({
-    //   message: error.message,
-    //   type: 'error',
-    //   duration: 5 * 1000
-    // })
     return Promise.reject(error)
   }
 )

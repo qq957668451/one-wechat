@@ -3,17 +3,17 @@
     <div class="jc-back">
       <div class="first-card">
         <div class="title">
-          <img src="@/assets/public_images/cars.png" alt="" />
+          <img src="@/assets/public_images/cars.png" />
           <span>电动车</span>
         </div>
         <div class="add-btn">
           <van-icon size="15" name="add-o" />
-          <span>电动车备案</span>
+          <span>导入电动车</span>
         </div>
       </div>
       <div class="first-card second-card">
         <div class="title">
-          <img class="second-img" src="@/assets/public_images/certificate.png" alt="" />
+          <img class="second-img" src="@/assets/public_images/certificate.png" />
           <span>电动车轨迹</span>
         </div>
         <div class="integral">
@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { wxinit } from '@/api/user'
 export default {
   data() {
     return {}
@@ -45,7 +43,7 @@ export default {
   watch: {},
   created() { },
   mounted() { },
-  methods: {}
+  methods: {},
 }
 </script>
 
@@ -54,7 +52,7 @@ export default {
   .jc-back {
     width: 100%;
     background: linear-gradient(#2a62a4, 90%, #fff);
-    height: 300px;
+    min-height: 300px;
     display: inline-flex;
     justify-content: space-between;
     padding: 15px 10px;
