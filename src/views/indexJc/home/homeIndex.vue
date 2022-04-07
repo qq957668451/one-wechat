@@ -42,7 +42,15 @@ export default {
   computed: {},
   watch: {},
   created() { },
-  mounted() { },
+  mounted() {
+    let base = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=';
+    let scope = "snsapi_userinfo";
+    let redirectURL = 'http://aliwx.niuchenyang.com/wx/redirect/wx283779586bbbd4e1/greet'
+    let state = 'http://aliwx.niuchenyang.com/#/master/index/home'
+    let appId = 'wx283779586bbbd4e1'
+    window.location.href = base + appId + '&redirect_uri=' + redirectURL + '&response_type=code&scope=' + scope +
+      '&state=' + state + '#wechat_redirect';
+  },
   methods: {},
 }
 </script>

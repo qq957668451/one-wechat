@@ -111,6 +111,7 @@ export const asyncRoutes = [
 
 const createRouter = () => new Router({
   base: process.env.VUE_APP_COMMON_PATH,
+  // mode: 'history', // require service support
   mode: 'hash', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
